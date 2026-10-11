@@ -1,7 +1,7 @@
 package com.cloudproject.dvma;
 
 import java.util.*;
-import org.cloudsimplus.core.CloudSim;
+import org.cloudsimplus.core.CloudSimPlus;
 import org.cloudsimplus.datacenters.Datacenter;
 import org.cloudsimplus.datacenters.DatacenterSimple;
 import org.cloudsimplus.brokers.DatacenterBroker;
@@ -61,7 +61,7 @@ public class SimulationService {
 
     private Map<String, Object> simulateCloudSim(List<Job> source, Policy policy) {
         // A fresh CloudSim simulation is created for each algorithm so the same workload is compared fairly.
-        CloudSim simulation = new CloudSim();
+        CloudSimPlus simulation = new CloudSimPlus();
         List<Host> hosts = new ArrayList<>();
         for (int h = 0; h < HOST_COUNT; h++) {
             List<Pe> pes = List.of(new PeSimple(MIPS), new PeSimple(MIPS));
