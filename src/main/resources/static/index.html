@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic VM Allocation | Cloud Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <div><span class="eyebrow">CLOUD COMPUTING RESEARCH PROJECT</span><h1>Dynamic VM Allocation</h1>
+    <p>Deadline-aware scheduling · Lease-aware preemption · Algorithm comparison</p></div>
+    <span class="live"><i></i> API dashboard</span>
+  </header>
+  <main>
+    <section class="panel controls">
+      <div><h2>Simulation controls</h2><p>Use the same seed to compare both policies on the same generated workload.</p></div>
+      <label>Workload seed <input id="seed" type="number" value="1" min="1"></label>
+      <button id="runBoth" class="primary">Run both algorithms</button>
+      <button id="runPaper">Paper-inspired</button>
+      <button id="runModified">Modified policy</button>
+      <span id="status" role="status">Ready</span>
+    </section>
+    <section class="cards" id="cards">
+      <article class="metric"><span>Hosts</span><strong>2</strong><small>Datacenter configuration</small></article>
+      <article class="metric"><span>Virtual machines</span><strong>2</strong><small>One job per VM at a time</small></article>
+      <article class="metric"><span>Generated jobs</span><strong id="jobCount">—</strong><small>Shared workload for comparison</small></article>
+      <article class="metric"><span>API status</span><strong id="apiStatus">Checking</strong><small>Spring Boot REST API</small></article>
+    </section>
+    <section class="results">
+      <article class="panel"><h2>Paper-inspired policy</h2><div id="paperSummary" class="summary empty">Run a simulation to view results.</div></article>
+      <article class="panel"><h2>Modified policy</h2><div id="modifiedSummary" class="summary empty">Run a simulation to view results.</div></article>
+    </section>
+    <section class="panel"><div class="section-head"><div><h2>Generated workload</h2><p>Arrival time, execution length, deadline, priority, and lease type.</p></div><span class="badge">Seed-based</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Job</th><th>Arrival</th><th>Execution</th><th>Deadline</th><th>Priority</th><th>Lease</th></tr></thead><tbody id="workloadBody"><tr><td colspan="6">No workload yet.</td></tr></tbody></table></div>
+    </section>
+    <section class="panel"><div class="section-head"><div><h2>Job execution results</h2><p>Detailed status for the selected algorithm.</p></div><select id="detailMode"><option value="paper">Paper-inspired</option><option value="modified">Modified policy</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>Job</th><th>Status</th><th>Lease</th><th>Start</th><th>Finish</th><th>VM</th></tr></thead><tbody id="resultsBody"><tr><td colspan="6">Run a simulation to see job results.</td></tr></tbody></table></div>
+    </section>
+    <section class="panel"><h2>Architecture</h2><div class="architecture"><div>GitHub Repository</div><b>↓</b><div>Render · Docker Build & Deployment</div><b>↓</b><div>Java 21 · Spring Boot REST API</div><b>↓</b><div>Scheduling Simulation Engine</div><b>↔</b><div>Static Dashboard in Browser</div></div>
+      <p class="note">Scope: self-contained educational simulation inspired by the supplied research paper. It is not a CloudSim Plus run and its outputs should not be presented as a reproduction of the paper's published measurements.</p>
+    </section>
+    <footer>Dynamic VM Allocation · Spring Boot + Docker · Research prototype</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
